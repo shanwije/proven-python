@@ -1,0 +1,38 @@
+proven-python
+Copyright (c) 2026 shanwije
+
+This project is licensed under the MIT License (see LICENSE). All of its content
+is written in the project's own words. The principles it distills are drawn from
+the public references listed in skills/proven-python/references/sources.md.
+
+The following sources are licensed under Creative Commons Attribution 3.0
+(CC BY 3.0). This project distills principles from them in its own words rather
+than reproducing their text; attribution is provided here as their license asks.
+
+- Google Python Style Guide
+  https://google.github.io/styleguide/pyguide.html
+  (c) Google LLC, licensed CC BY 3.0.
+
+- Google Engineering Practices (Code Review Developer Guide)
+  https://google.github.io/eng-practices/
+  (c) Google LLC, licensed CC BY 3.0.
+
+- Semantic Versioning
+  https://semver.org/
+  (c) Tom Preston-Werner, licensed CC BY 3.0.
+
+- Conventional Commits
+  https://www.conventionalcommits.org/
+  Licensed CC BY 3.0.
+
+The Diátaxis documentation framework (https://diataxis.fr/) is referenced and is
+licensed CC BY-SA 4.0. This project restates and links to it rather than
+redistributing its text, so the share-alike term is not triggered.
+
+The Wikipedia guide "Signs of AI writing"
+(https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) is referenced and is
+licensed CC BY-SA 4.0. This project restates its principles and links to it rather
+than redistributing its text, so the share-alike term is not triggered.
+
+No copyrighted text from any read-only source listed in sources.md is included in
+this project.

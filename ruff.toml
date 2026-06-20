@@ -1,0 +1,14 @@
+# Ruff config for this repository's only Python: the validation script under scripts/.
+# The repo is not a Python package; this file just lets ruff lint and format that script to
+# the same standard the skill teaches.
+line-length = 100
+target-version = "py311"
+
+[lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM", "PTH", "ANN", "D", "RUF"]
+
+[lint.pydocstyle]
+convention = "google"
+
+[lint.per-file-ignores]
+"scripts/test_*.py" = ["ANN", "D", "S"]

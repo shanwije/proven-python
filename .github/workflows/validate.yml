@@ -1,0 +1,41 @@
+# Validation CI for this repository. This repo ships a skill, not a Python package, so its CI
+# validates the skill and its manifests rather than running a product test suite. The one piece
+# of Python here (the validation script under scripts/) is linted, type checked, and tested,
+# because the proven-python skill holds its own code to the same bar it sets for everyone else.
+
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+
+      - name: Lint validation script (ruff check)
+        run: uvx ruff check scripts/
+
+      - name: Format check validation script (ruff format)
+        run: uvx ruff format --check scripts/
+
+      - name: Type check validation script (mypy --strict)
+        run: uvx --with pytest mypy --strict scripts/
+
+      - name: Test validation script (pytest)
+        run: uvx pytest scripts/
+
+      - name: Validate manifests, internal links, and dash scan
+        run: uv run --no-project python scripts/validate_repo.py
+
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v19
+        with:
+          globs: "**/*.md"

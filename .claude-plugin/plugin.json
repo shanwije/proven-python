@@ -1,0 +1,29 @@
+{
+  "name": "proven-python",
+  "version": "0.1.0",
+  "description": "Engineering-discipline guardrails for writing, testing, and reviewing Python: test-driven development, full type coverage, clean readable code, deliberate design, PEP 257 docs, and a green toolchain (ruff, mypy, pytest) before anything is called done.",
+  "author": {
+    "name": "shanwije",
+    "url": "https://github.com/shanwije"
+  },
+  "homepage": "https://github.com/shanwije/proven-python",
+  "repository": "https://github.com/shanwije/proven-python",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "claude-code-skill",
+    "agent-skills",
+    "ai-coding",
+    "python",
+    "tdd",
+    "testing",
+    "pytest",
+    "type-hints",
+    "mypy",
+    "ruff",
+    "clean-code",
+    "design-patterns",
+    "code-review",
+    "engineering"
+  ]
+}

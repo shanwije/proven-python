@@ -1,0 +1,15 @@
+{
+  // Markdown lint rules for this repository. See https://github.com/DavidAnson/markdownlint.
+  "config": {
+    "default": true,
+    // Prose wraps at 100 columns by hand, not at the 80-column default.
+    "MD013": false,
+    // Fenced blocks here hold directory trees and Claude Code slash commands, not a language.
+    "MD040": false
+  },
+  "ignores": [
+    ".git",
+    ".context",
+    "node_modules"
+  ]
+}

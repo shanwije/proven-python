@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg
+*.egg-info/
+.eggs/
+build/
+dist/
+.python-version
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+
+# Tooling caches and coverage
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+
+# Node (markdownlint and other npx tools)
+node_modules/
+
+# Editors and IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.bak
+
+# OS files
+.DS_Store
+.AppleDouble
+Thumbs.db
+desktop.ini

@@ -1,0 +1,98 @@
+# Copy this to the root of your project as pyproject.toml and edit the [project] block.
+# It wires the proven-python toolchain: ruff (lint and format), mypy (strict), and pytest
+# (with coverage). One file is the single source of truth for metadata and tool config.
+#
+# Layout assumed: importable code under src/, tests under tests/. Adjust the paths below
+# (tool.mypy targets, tool.coverage.run source) if your layout differs.
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "your-package"
+version = "0.1.0"
+description = "Replace with a one-line description of your project."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Your Name", email = "you@example.com" }]
+dependencies = []
+
+# Dev tooling lives in a PEP 735 dependency group. `uv sync` installs it by default.
+[dependency-groups]
+dev = [
+  "ruff>=0.6",
+  "mypy>=1.11",
+  "pytest>=8",
+  "pytest-cov>=5",
+  "hypothesis>=6",
+]
+
+# --------------------------------------------------------------------------------------
+# Ruff: lint and format. Run `ruff check` and `ruff format`.
+# --------------------------------------------------------------------------------------
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+# A strict but practical selection. Add or drop families to taste; run `ruff rule <code>`
+# to see what any rule does.
+select = [
+  "E", "F", "W",   # pycodestyle and pyflakes: the core
+  "I",             # isort: import order
+  "N",             # pep8-naming
+  "UP",            # pyupgrade: modern syntax for your target version
+  "B",             # bugbear: likely bugs and bad practice
+  "C4",            # comprehensions: clearer, faster forms
+  "SIM",           # simplify: redundant constructs
+  "PTH",           # prefer pathlib over os.path
+  "ANN",           # annotations: every signature is typed
+  "S",             # bandit: common security mistakes
+  "D",             # pydocstyle: PEP 257 docstrings
+  "RUF",           # ruff-specific rules
+]
+ignore = []
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Tests may use assert, need no docstrings, and need no annotations on the test functions.
+"tests/**/*.py" = ["S101", "D", "ANN"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+# --------------------------------------------------------------------------------------
+# Mypy: strict type checking. Run `mypy --strict src tests`.
+# --------------------------------------------------------------------------------------
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unreachable = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+show_error_codes = true
+# Require typed third-party packages, or add per-module overrides below for stubs you lack.
+# [[tool.mypy.overrides]]
+# module = ["some_untyped_dep.*"]
+# ignore_missing_imports = true
+
+# --------------------------------------------------------------------------------------
+# Pytest and coverage. Run `pytest`.
+# --------------------------------------------------------------------------------------
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers --strict-config --cov --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["src"]
+
+[tool.coverage.report]
+show_missing = true
+# Raise this as your suite matures. A number you never reach teaches the team to ignore it.
+fail_under = 90

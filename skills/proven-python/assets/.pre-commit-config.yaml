@@ -1,0 +1,25 @@
+# Copy this to the root of your project as .pre-commit-config.yaml, then run once:
+#   uvx pre-commit install
+# After that the hooks run on every commit. Run them on the whole repo at any time with:
+#   uvx pre-commit run --all-files
+# Refresh the pinned revisions periodically with:
+#   uvx pre-commit autoupdate
+#
+# Pre-commit catches what it can before the commit lands. It does not replace CI: the same
+# checks run there too, so a green build never depends on a contributor having the hooks.
+
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.9
+    hooks:
+      - id: ruff             # lint, autofixing what is safe to fix
+        args: [--fix]
+      - id: ruff-format      # format
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.11.2
+    hooks:
+      - id: mypy
+        args: [--strict]
+        # List your runtime and stub dependencies here so mypy sees real types, not Any.
+        additional_dependencies: []
