@@ -67,6 +67,11 @@ share a few helper methods. A `Protocol` or a passed-in function is often the li
 - Never catch broadly to silence a traceback or make a test pass. A bare `except:` or `except
   Exception:` that swallows the error hides the bug and the next one after it. Catch the narrowest
   exception you can actually handle, and let the rest propagate.
+- **No silent `except`.** A caught error must be both *logged* (with context) and *handled*: recover,
+  surface it to the user or caller, or re-raise. Never swallow. No `except Exception: pass`, no
+  caught-but-unused exception variable. When you translate a low-level error into your own, chain it
+  with `raise MyError(...) from err` so the original cause is not lost. `ruff`'s `BLE` (blind except),
+  `LOG`, and `G` (logging format) families catch the common offenders; keep them on.
 
 ## Prefer immutable, prefer explicit
 
