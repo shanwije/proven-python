@@ -1,0 +1,23 @@
+name: Feature or improvement
+description: Suggest an addition, or a sharper version of an existing rule
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem or gap
+      description: What is missing or weak today, and why it matters in practice.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What you propose
+      description: The change, and where it would live (which reference, checklist, or asset).
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you considered

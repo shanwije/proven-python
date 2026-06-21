@@ -1,0 +1,31 @@
+name: Bug report
+description: Something in the skill or its tooling is wrong, broken, or misleading
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to report this. The more specific you are, the faster it gets fixed.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What did you see, and where (file and line, a command, or the prompt you gave the agent)?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      description: Steps, a command, or the exact prompt, so someone else can see the same thing.
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      description: Agent (Claude Code, Codex, Cursor), OS, and tool versions if relevant.

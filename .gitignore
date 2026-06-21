@@ -42,3 +42,6 @@ node_modules/
 .AppleDouble
 Thumbs.db
 desktop.ini
+
+# Local agent and browser-automation artifacts (Playwright MCP)
+.playwright-mcp/
