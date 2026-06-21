@@ -23,3 +23,10 @@ repos:
         args: [--strict]
         # List your runtime and stub dependencies here so mypy sees real types, not Any.
         additional_dependencies: []
+
+  # Optional: lint Markdown the same way this project's CI does. Drop this block if the project
+  # has no docs worth linting.
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.15.0
+    hooks:
+      - id: markdownlint-cli2
