@@ -36,6 +36,6 @@ jobs:
         run: uv run --no-project python scripts/validate_repo.py
 
       - name: Lint Markdown
-        uses: DavidAnson/markdownlint-cli2-action@v19
+        uses: DavidAnson/markdownlint-cli2-action@v23
         with:
           globs: "**/*.md"
