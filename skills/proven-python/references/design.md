@@ -75,6 +75,20 @@ built. Immutable data cannot be corrupted by a distant caller and is safe to sha
 state: no mutable default arguments, no import-time side effects, no module-level mutable globals
 standing in for parameters.
 
+## Enforce boundaries with a tool
+
+Prose keeps module boundaries honest only as long as everyone remembers them. On a codebase with
+real modules (a modular monolith, a multi-package app, a monorepo), make a boundary violation fail
+the build the way ruff fails on style. [Tach](https://github.com/tach-org/tach) checks that imports
+come only from declared dependencies, that cross-module calls go through a declared public interface,
+and that the dependency graph stays free of cycles.
+[import-linter](https://github.com/seddonym/import-linter) is the established, pure-Python
+alternative.
+
+This is optional, and it scales with the code: a single-module script has no boundaries to enforce,
+so skip it there. Reach for it once an accidental import across a boundary would be a real problem.
+Both tools are listed in `sources.md`.
+
 ## When you are done
 
 No abstraction exists without a present duplication or rigidity to justify it. Decisions are

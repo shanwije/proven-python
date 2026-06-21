@@ -41,3 +41,8 @@ jobs:
 
       - name: Tests (pytest with coverage)
         run: uv run pytest
+
+      # Optional: enforce module boundaries on a multi-module project. Run `tach init` once to
+      # create tach.toml, then uncomment. Pin the version, because Tach is pre-1.0.
+      # - name: Architecture (tach check)
+      #   run: uvx tach@0.35.0 check

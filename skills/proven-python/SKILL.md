@@ -92,6 +92,8 @@ Default to the modern stack and state which you used:
 - Tests: `pytest` with `pytest-cov`. Add `hypothesis` for property-based tests when the input
   space is too wide for examples to cover.
 - Project metadata and tool config live in `pyproject.toml` (PEP 621), as one source of truth.
+- Architecture and boundaries: `tach check` (or `import-linter`) to enforce module dependencies and
+  no import cycles. Optional, for projects with real module boundaries; skip it on a small script.
 
 A command that fails the build on a violation is worth more than a paragraph asking the model to
 behave. Prefer the tool over the instruction wherever a tool exists.

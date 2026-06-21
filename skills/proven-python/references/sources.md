@@ -41,6 +41,7 @@ concretions") is not copyrightable; a specific author's phrasing of it is.
 | Diátaxis | Documentation structure framework | CC BY-SA 4.0 (share-alike) | diataxis.fr |
 | Claude Code best practices (Anthropic) | How an agentic coding assistant works, so this skill complements it | Free to read and link | code.claude.com/docs/en/best-practices |
 | Wikipedia: Signs of AI writing | Catalog of AI-writing tells in prose | CC BY-SA 4.0 (share-alike) | en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing |
+| Tach docs | Enforcing module boundaries and a cycle-free import graph | MIT | docs.gauge.sh |
 
 Notes:
 
