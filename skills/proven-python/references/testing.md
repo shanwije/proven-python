@@ -60,6 +60,20 @@ to cover a range of inputs, use parametrization, not a loop.
 - **pytest-cov** measures which lines and branches ran. Use coverage to find untested code, not as a
   target to game. High coverage of weak assertions proves nothing.
 
+A property-based test in practice: state an invariant and let Hypothesis search for a counterexample,
+instead of hand-picking a few inputs.
+
+```python
+from hypothesis import given, strategies as st
+
+
+@given(st.lists(st.integers()))
+def test_sort_is_idempotent(items: list[int]) -> None:
+    """Sorting an already sorted list changes nothing."""
+    once = sorted(items)
+    assert sorted(once) == once
+```
+
 ## Tests must be deterministic
 
 A test that passes or fails depending on the day, the machine, or the run order is worse than no
