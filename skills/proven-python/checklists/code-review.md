@@ -9,7 +9,9 @@ each finding as symptom, cause, consequence, and fix, and mark whether it blocks
 - [ ] The change does what it claims, and the claim matches the stated requirement.
 - [ ] Edge cases are handled: empty, single, boundary, one past the boundary.
 - [ ] Error paths are handled; no unhandled `None`, no off by one, no race.
-- [ ] No exception is swallowed; failures surface where a caller can act on them.
+- [ ] No exception is swallowed; every caught error is logged with context and recovered, surfaced,
+      or re-raised (`raise ... from err` when translating). No `except Exception: pass`, no unused
+      caught variable.
 - [ ] No secret, credential, or environment-specific literal is introduced.
 
 ## Tests (blocks merge for new behavior)

@@ -32,6 +32,8 @@ say so explicitly rather than skipping it.
 - [ ] Collaborators are injected, not constructed inside or pulled from globals.
 - [ ] I/O is separated from decision logic where it reasonably can be.
 - [ ] Exceptions are specific and raised at the point of contract violation; nothing is swallowed.
+- [ ] Every caught error is logged with context and handled (recover, surface, or re-raise with
+      `from`); no `except Exception: pass`, no unused caught variable.
 
 ## Configuration and safety
 
