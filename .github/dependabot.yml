@@ -1,0 +1,12 @@
+# Dependabot keeps the GitHub Actions used by this repository's CI up to date.
+# The repository ships a skill plus a uv-managed validation script with no
+# pinned dependency manifest, so the Actions workflow is the one place where
+# third-party versions can drift and is the only ecosystem tracked here.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "ci"
