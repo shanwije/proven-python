@@ -1,0 +1,4 @@
+# Default owner for everything in this repository.
+# Add per-path lines as the project grows, for example:
+#   skills/ @some-maintainer
+* @shanwije
