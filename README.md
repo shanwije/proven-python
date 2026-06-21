@@ -28,11 +28,17 @@ it, and the gates live in `checklists/`.
 ## Quickstart
 
 Install the plugin:
+
+```
 /plugin marketplace add shanwije/proven-python
 /plugin install proven-python
+```
 
 Then ask your agent to write something in Python, for example:
+
+```
 Write a function that validates a US phone number and returns it in E.164 format.
+```
 
 Instead of handing back code straight away, the agent writes a failing test first, types the
 function signature fully, implements it, then runs ruff, mypy, and pytest before reporting
