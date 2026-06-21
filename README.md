@@ -2,14 +2,19 @@
 
 [![validate](https://github.com/shanwije/proven-python/actions/workflows/validate.yml/badge.svg)](https://github.com/shanwije/proven-python/actions/workflows/validate.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![Claude Code skill](https://img.shields.io/badge/Claude%20Code-skill-8A2BE2) [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-> The code looks done. It compiles, it reads well, it probably works.
-> proven-python runs it red until a test proves it.
+> Your AI agent says "done" and hands you a pile of Python: untested, loosely typed, sloppy in the places nobody looked. You find out when you read it.
+> proven-python holds the agent to the standards you would have checked in review, so the code arrives already at your bar instead of arriving as work you have to prove from scratch.
 
-**proven-python** holds an AI coding agent to real engineering discipline on Python. "Looks done" is not
-done: a change is done when a failing test drove it, every signature is typed, the linter is quiet,
-and the whole bar is green. Until then the bar is red, and so is the task. It enforces test-driven
-development, full type coverage, small readable functions, PEP 257 docstrings, configuration over
-hardcoding, deliberate design, and a green toolchain before anything is called done.
+**proven-python** exists because an AI agent writes a lot of code fast and nothing holds it to your
+team's quality bar. The agent declares "done" on code that no failing test drove, that types
+loosely, that reads fine on the surface and breaks under the cases nobody wrote, and a human cleans
+it up later. This skill points the agent at the standards your team already trusts, the Google
+Python Style Guide, PEP 8, PEP 257, PEP 484, test-driven development, and full type coverage, and
+tells it to meet them before reporting back: write the failing test first, type every signature,
+keep functions small and readable, and document the contract. The skill guides; the deterministic
+enforcement comes from the toolchain the skill runs, ruff, mypy, and pytest, which stay red until
+the work actually clears the bar. So "looks done" never gets to pass for "proven done", and the
+Python an agent hands you reads like the Python your team writes by hand.
 
 It ships as a [Claude Code](https://claude.com/claude-code) skill, but the discipline is
 agent-agnostic: the procedure is plain Markdown, so it works just as well dropped into Codex,
@@ -22,21 +27,24 @@ it, and the gates live in `checklists/`.
 
 ## Why
 
-Most code an AI agent writes looks right and is never proven right. This skill makes the agent
-work the way a disciplined engineer does: write the failing test first, type everything, keep
-units small and honest, document the contract, and refuse to declare a task finished while the
-linter, the type checker, or the suite is red. It is grounded in the canonical Python and
-software-engineering literature, distilled in the skill's own words, with every source and its
-license listed in `skills/proven-python/references/sources.md`.
+proven-python has the agent work the way a disciplined engineer does: write the failing test first,
+type everything, keep units small and honestly named, document the contract, and refuse to call a
+task finished while ruff, mypy, or pytest is red. None of the rules are invented here. They are the
+established, industry-standard ones your team already follows, drawn from the canonical Python and
+software-engineering literature: the Google Python Style Guide, Google's Code Review Developer
+Guide, PEP 8, PEP 257, and PEP 484. Each is distilled in the skill's own words, with every source
+and its license listed in `skills/proven-python/references/sources.md`. The payoff is code an agent
+writes that clears the same bar as the code you write by hand, so your review confirms quality
+instead of supplying it.
 
 ## What it enforces
 
 - Test-first development and regression tests for bug fixes (`references/testing.md`)
 - Strict typing with no unexplained ignores (`references/typing.md`)
-- Readable names, small functions, idiomatic Python (`references/style.md`)
-- Design for change, SOLID, composition, I/O separated from logic (`references/design.md`)
-- PEP 257 docstrings, READMEs, ADRs, changelogs (`references/documentation.md`)
-- Code review with prioritized, actionable findings (`references/review.md`)
+- Readable names, small functions, idiomatic Python per the Google Python Style Guide and PEP 8 (`references/style.md`)
+- Design for change, SOLID, composition, I/O separated from logic, module boundaries kept cycle-free with Tach (`references/design.md`)
+- PEP 257 docstrings in Google docstring style, READMEs, ADRs, changelogs (`references/documentation.md`)
+- Code review with prioritized, actionable findings, drawn from Google's Code Review Developer Guide (`references/review.md`)
 - Output that reads as human-crafted, not machine-generated (`references/human-readable.md`)
 - A definition-of-done gate and a review gate (`checklists/`)
 
@@ -80,6 +88,7 @@ into your project so the build fails on a violation regardless of what any model
 - `ruff check` and `ruff format` for lint and format
 - `mypy --strict` or Pyright for types
 - `pytest` with `pytest-cov` for tests, and `hypothesis` for property-based tests
+- `tach check` (or `import-linter`) to keep module boundaries and the import graph cycle-free on a multi-module project
 - a pre-commit hook and a CI gate running all of the above
 
 The skill points the agent at these. The tools are what actually hold the line.
