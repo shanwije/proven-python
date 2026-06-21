@@ -48,6 +48,8 @@ select = [
   "B",             # bugbear: likely bugs and bad practice
   "C4",            # comprehensions: clearer, faster forms
   "SIM",           # simplify: redundant constructs
+  "BLE",           # blind-except: no bare or overbroad except that swallows errors
+  "LOG", "G",      # logging: log caught errors, with correct format
   "PTH",           # prefer pathlib over os.path
   "ANN",           # annotations: every signature is typed
   "S",             # bandit: common security mistakes

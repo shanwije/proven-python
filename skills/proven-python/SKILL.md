@@ -61,7 +61,11 @@ those are worth avoiding whatever the code is for.
    deployment. Inject dependencies rather than reaching for globals or import-time side effects.
 6. Design for change before reaching for a pattern. Introduce an abstraction to remove a real,
    present duplication or rigidity, never on speculation. See `references/design.md`.
-7. Leave the toolchain green. Lint, format, type check, and tests all pass locally before the
+7. No silent failures. A caught error is both logged with context and handled: recover, surface it
+   to the user or caller, or re-raise (`raise ... from err` when translating). Never swallow. No
+   bare `except:`, no `except Exception: pass`, no caught-but-unused exception variable. See
+   `references/design.md`.
+8. Leave the toolchain green. Lint, format, type check, and tests all pass locally before the
    task is done. See the toolchain below.
 
 ## Workflow
@@ -112,6 +116,7 @@ Do not call a task complete until every item holds. The full version is
 - The type checker passes with no unexplained ignores.
 - Lint and format pass with no suppression you cannot justify.
 - Public API has docstrings stating arguments, return value, and exceptions raised.
+- No caught error is swallowed: every handler logs with context and recovers, surfaces, or re-raises.
 - No secrets, no environment-specific literals, no dead code, no leftover debug prints.
 - Names read clearly, functions are small, nesting is shallow.
 - The change is the smallest one that satisfies the requirement.
@@ -128,6 +133,8 @@ and separate what blocks merge from what is a suggestion.
 - Writing implementation before a test exists for it.
 - Adding a layer, abstraction, or design pattern with no present duplication to justify it.
 - Catching exceptions broadly to make a test pass or a traceback disappear.
+- Swallowing a caught error: an empty handler, `except Exception: pass`, or a caught error that is
+  neither logged nor handled nor re-raised.
 - `# type: ignore` or `# noqa` with no error code and no reason.
 - Functions that do several jobs, deep nesting, names that lie about behavior.
 - Comments that restate the code instead of explaining a non-obvious reason.
